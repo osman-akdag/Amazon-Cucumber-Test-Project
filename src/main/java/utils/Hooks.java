@@ -2,8 +2,8 @@ package utils;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+
 import org.openqa.selenium.WebDriver;
-import org.testng.Reporter;
 
 import java.util.Properties;
 
@@ -12,13 +12,14 @@ public class Hooks {
     Properties properties;
     @Before
     public void before() {
-        String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
         properties = ConfigReader.initialize_Properties();
+        String browser = properties.getProperty("browser");
         driver = DriverFactory.initialize_Driver(browser);
     }
 
     @After
-    public void after() {
+    public void after() throws InterruptedException {
+        Thread.sleep(5000);
         driver.quit();
     }
 }

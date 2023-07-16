@@ -30,8 +30,8 @@ public class DriverFactory {
         String url = properties.getProperty("url");
         int impWait = Integer.parseInt(properties.getProperty("implicityWait"));
         int pageWait = Integer.parseInt(properties.getProperty("pageLoadTimeout"));
-        driver.get(url);
         driver.manage().window().maximize();
+        driver.get(url);
         // Implicit Wait
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(impWait));
         // Page Load Timeout

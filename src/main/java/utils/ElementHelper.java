@@ -24,17 +24,19 @@ public class ElementHelper {
         return wait.until(ExpectedConditions.presenceOfElementLocated(key));
     }
     public WebElement findElement(By key){
-        WebElement element = presenceElement(key);
-        return element;
+        return presenceElement(key);
     }
+
     public void click(By key){
         findElement(key).click();
     }
     public void sendKey(By key, String text){
         findElement(key).sendKeys(text);
     }
-    public void checkVisible(By key){
-        wait.until(ExpectedConditions.visibilityOf(findElement(key)));
+
+    public boolean isDisplayed(By key) {
+        return findElement(key).isDisplayed();
     }
+
 
 }
